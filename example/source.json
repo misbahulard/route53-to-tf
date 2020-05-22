@@ -1,0 +1,82 @@
+{
+    "ResourceRecordSets": [
+        {
+            "Name": "example.com.",
+            "Type": "MX",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "10 mail.example.com"
+                }
+            ]
+        },
+        {
+            "Name": "example.com.",
+            "Type": "NS",
+            "TTL": 172800,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-69.awsdns-69.co.uk."
+                },
+                {
+                    "Value": "ns-69.awsdns-69.org."
+                },
+                {
+                    "Value": "ns-69.awsdns-69.net."
+                },
+                {
+                    "Value": "ns-69.awsdns-69.com."
+                }
+            ]
+        },
+        {
+            "Name": "example.com.",
+            "Type": "SOA",
+            "TTL": 900,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-69.awsdns-69.co.uk. awsdns-hostmaster.amazon.com. 2020032301 7200 900 1209600 86400"
+                }
+            ]
+        },
+        {
+            "Name": "www.example.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "www.ap-southeast-1.elb.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "cloudflare-verify.example.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"qwertyuiop-asdfghjkl\""
+                }
+            ]
+        },
+        {
+            "Name": "web.example.com.",
+            "Type": "A",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "111.111.111.111"
+                }
+            ]
+        },
+        {
+            "Name": "app.example.com.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "QWERTYUIOP",
+                "DNSName": "app.prod-utility.ap-southeast-1.elb.amazonaws.com.",
+                "EvaluateTargetHealth": false
+            }
+        }
+    ]
+}
