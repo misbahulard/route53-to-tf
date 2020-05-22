@@ -1,5 +1,5 @@
 # Route53 To TF
-This tool is to convert your route53 JSON output  from below AWS CLI command to terraform resource.
+This tool is to convert your route53 JSON output  from below AWS CLI command to terraform resource. After file terraform created don't forget to rename ZONEID string to your Zone ID or use your terraform variables on it.
 
 ```
 aws route53 list-resource-record-sets --hosted-zone-id hosted-zone-id > path-to-output-file
