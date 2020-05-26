@@ -39,6 +39,9 @@ func Run(source string, output string) {
 
 		resourceName := strings.TrimRight(item.Name, ".")
 		resourceName = strings.ReplaceAll(resourceName, ".", "_")
+		if item.Type == "MX" || item.Type == "SPF" || item.Type == "TXT" {
+			resourceName = resourceName + "_" + strings.ToLower(item.Type)
+		}
 
 		fmt.Fprintf(f, "resource \"aws_route53_record\" \"%s\" {\n", resourceName)
 		fmt.Fprintf(f, "  zone_id = \"ZONEID\"\n")
@@ -55,18 +58,19 @@ func Run(source string, output string) {
 		} else {
 			fmt.Fprintf(f, "  ttl     = \"%d\"\n", item.TTL)
 			fmt.Fprintf(f, "  records = [\n")
-			
+
 			length := len(item.ResourceRecords)
-			
+
 			for index, record := range item.ResourceRecords {
-	
+
 				value := strings.ReplaceAll(record.Value, "\"", "")
-	
-				if (index+1) == length {
+
+				if (index + 1) == length {
 					fmt.Fprintf(f, "    \"%s\"\n", value)
 				} else {
 					fmt.Fprintf(f, "    \"%s\",\n", value)
 				}
+
 			}
 
 			fmt.Fprintf(f, "  ]\n")
@@ -77,3 +81,4 @@ func Run(source string, output string) {
 
 	fmt.Println("generated successfully:", output)
 }
+
